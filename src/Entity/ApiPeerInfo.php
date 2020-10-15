@@ -1,0 +1,75 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\ApiPeerInfoRepository;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass=ApiPeerInfoRepository::class)
+ */
+class ApiPeerInfo
+{
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nameConversation;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $userA;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $userB;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getNameConversation(): ?string
+    {
+        return $this->nameConversation;
+    }
+
+    public function setNameConversation(string $nameConversation): self
+    {
+        $this->nameConversation = $nameConversation;
+
+        return $this;
+    }
+
+    public function getUserA(): ?string
+    {
+        return $this->userA;
+    }
+
+    public function setUserA(?string $userA): self
+    {
+        $this->userA = $userA;
+
+        return $this;
+    }
+
+    public function getUserB(): ?string
+    {
+        return $this->userB;
+    }
+
+    public function setUserB(?string $userB): self
+    {
+        $this->userB = $userB;
+
+        return $this;
+    }
+}
