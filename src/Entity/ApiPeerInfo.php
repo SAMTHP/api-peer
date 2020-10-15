@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ApiPeerInfoRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ApiPeerInfoRepository;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass=ApiPeerInfoRepository::class)
+ * @ApiResource
  */
 class ApiPeerInfo
 {
