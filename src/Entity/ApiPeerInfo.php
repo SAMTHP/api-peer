@@ -25,12 +25,12 @@ class ApiPeerInfo
     private $nameConversation;
 
     /**
-     * @ORM\Column(type="json", nullable=true)
+     * @ORM\Column(type="json_array", nullable=true)
      */
     private $userA;
 
     /**
-     * @ORM\Column(type="json", nullable=true)
+     * @ORM\Column(type="json_array", nullable=true)
      */
     private $userB;
 
