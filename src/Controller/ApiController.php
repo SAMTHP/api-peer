@@ -18,7 +18,7 @@ class ApiController extends AbstractController
         $data = $request->getContent();
         $decodeData = \json_decode($data);
 
-        dd($decodeData);
+        dd($decodeData->user_a);
         return $this->render('api/index.html.twig', [
             'controller_name' => 'ApiController',
         ]);
