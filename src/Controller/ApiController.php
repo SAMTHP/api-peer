@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 class ApiController extends AbstractController
 {
     /**
-     * @Route("/api/set-user-a", name="api_set_user_a"", methods={"POST"})
+     * @Route("/api/set-user-a", name="api_set_user_a", methods={"POST"})
      */
     public function index(SerializerInterface $serializerInterface, EntityManagerInterface $entityManagerInterface, Request $request)
     {
