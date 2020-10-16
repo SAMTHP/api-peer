@@ -51,24 +51,24 @@ class ApiPeerInfo
         return $this;
     }
 
-    public function getUserA(): ?string
+    public function getUserA(): ?array
     {
         return $this->userA;
     }
 
-    public function setUserA(?string $userA): self
+    public function setUserA(?array $userA): self
     {
         $this->userA = $userA;
 
         return $this;
     }
 
-    public function getUserB(): ?string
+    public function getUserB(): ?array
     {
         return $this->userB;
     }
 
-    public function setUserB(?string $userB): self
+    public function setUserB(?array $userB): self
     {
         $this->userB = $userB;
 

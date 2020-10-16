@@ -23,10 +23,8 @@ class ApiController extends AbstractController
 
         $apiPeer = new ApiPeerInfo();
         $apiPeer->setNameConversation($decodeData->name_conversation);
-        $apiPeer->setUserA($decodeData->user_a);
-        dd($apiPeer);
-
-
+        $apiPeer->setUserA([$decodeData->user_a]);
+        
         $result = $serializerInterface->serialize(
             $apiPeer,
             'json'
