@@ -136,5 +136,32 @@ class ApiController extends AbstractController
         );
     }
 
+    /**
+     * @Route("/api/set-answer", name="api_set_answer", methods={"POST"})
+     */
+    public function setAnswer(ApiPeerInfoRepository $apiPeerInfoRepository, SerializerInterface $serializerInterface, EntityManagerInterface $entityManagerInterface, Request $request)
+    {
+        $data = $request->getContent();
+        $decodeData = \json_decode($data);
+
+        $apiPeer = $apiPeerInfoRepository->findOneByNameConversation($decodeData->name_conversation);
+
+        $apiPeer->setAnswer([$decodeData->answer]);
+
+        $entityManagerInterface->persist($apiPeer);
+        $entityManagerInterface->flush();
+        
+        $result = $serializerInterface->serialize(
+            $apiPeer,
+            'json'
+        );
+
+        return new JsonResponse(
+            $result,
+            Response::HTTP_OK,
+            [],
+            true
+        );
+    }
 
 }

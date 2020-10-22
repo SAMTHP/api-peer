@@ -34,6 +34,11 @@ class ApiPeerInfo
      */
     private $userB;
 
+    /**
+     * @ORM\Column(type="json", nullable=true)
+     */
+    private $answer = [];
+
     public function getId(): ?int
     {
         return $this->id;
@@ -71,6 +76,18 @@ class ApiPeerInfo
     public function setUserB(?array $userB): self
     {
         $this->userB = $userB;
+
+        return $this;
+    }
+
+    public function getAnswer(): ?array
+    {
+        return $this->answer;
+    }
+
+    public function setAnswer(?array $answer): self
+    {
+        $this->answer = $answer;
 
         return $this;
     }
