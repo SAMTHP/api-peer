@@ -137,6 +137,39 @@ class ApiController extends AbstractController
     }
 
     /**
+     * @Route("/api/get-user-b", name="api_get_user_b", methods={"POST"})
+     */
+    public function getUserB(ApiPeerInfoRepository $apiPeerInfoRepository, SerializerInterface $serializerInterface, EntityManagerInterface $entityManagerInterface, Request $request)
+    {
+        $data = $request->getContent();
+        $decodeData = \json_decode($data);
+        
+        $apiPeer = $apiPeerInfoRepository->findOneByNameConversation($decodeData->name_conversation);
+        
+        $response = false;
+
+        if($apiPeer != null) {
+            $userB = $apiPeer->getUserB();
+    
+            if($userB != null) {
+                $response = $userB[0];
+            }
+        }
+
+        $result = $serializerInterface->serialize(
+            $response,
+            'json'
+        );
+
+        return new JsonResponse(
+            $result,
+            Response::HTTP_OK,
+            [],
+            true
+        );
+    }
+
+    /**
      * @Route("/api/set-answer", name="api_set_answer", methods={"POST"})
      */
     public function setAnswer(ApiPeerInfoRepository $apiPeerInfoRepository, SerializerInterface $serializerInterface, EntityManagerInterface $entityManagerInterface, Request $request)
