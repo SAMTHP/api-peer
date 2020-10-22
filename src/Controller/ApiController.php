@@ -50,7 +50,8 @@ class ApiController extends AbstractController
         $data = $request->getContent();
         $decodeData = \json_decode($data);
 
-        $apiPeer = $apiPeerInfoRepository->findByNameConversation($decodeData->name_conversation);
+        $apiPeer = $apiPeerInfoRepository->findOneByNameConversation($decodeData->name_conversation);
+
         $apiPeer->setUserB([$decodeData->user_b]);
 
         $entityManagerInterface->persist($apiPeer);
@@ -58,6 +59,35 @@ class ApiController extends AbstractController
         
         $result = $serializerInterface->serialize(
             $apiPeer,
+            'json'
+        );
+
+        return new JsonResponse(
+            $result,
+            Response::HTTP_OK,
+            [],
+            true
+        );
+    }
+
+    /**
+     * @Route("/api/find-user-b-response", name="api_find_user_a_response", methods={"POST"})
+     */
+    public function findUserBresponse(ApiPeerInfoRepository $apiPeerInfoRepository, SerializerInterface $serializerInterface, EntityManagerInterface $entityManagerInterface, Request $request)
+    {
+        $data = $request->getContent();
+        $decodeData = \json_decode($data);
+
+        $apiPeer = $apiPeerInfoRepository->findOneByNameConversation($decodeData->name_conversation);
+        $userB = $apiPeer->getUserB();
+        $response = false;
+
+        if($userB != null) {
+            $response = $userB[0];
+        }
+
+        $result = $serializerInterface->serialize(
+            $response,
             'json'
         );
 
