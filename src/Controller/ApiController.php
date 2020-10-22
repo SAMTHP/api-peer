@@ -77,13 +77,17 @@ class ApiController extends AbstractController
     {
         $data = $request->getContent();
         $decodeData = \json_decode($data);
-
+        
         $apiPeer = $apiPeerInfoRepository->findOneByNameConversation($decodeData->name_conversation);
-        $userB = $apiPeer->getUserB();
+        
         $response = false;
-
-        if($userB != null) {
-            $response = $userB[0];
+        
+        if($apiPeer != null) {
+            $userB = $apiPeer->getUserB();
+    
+            if($userB != null) {
+                $response = $userB[0];
+            }
         }
 
         $result = $serializerInterface->serialize(
