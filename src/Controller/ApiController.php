@@ -34,14 +34,12 @@ class ApiController extends AbstractController
             'json'
         );
 
-        $resp = new JsonResponse(
+        return new JsonResponse(
             $result,
             Response::HTTP_OK,
             [],
             true
         );
-
-        return $resp->headers->set('Access-Control-Allow-Origin', '*');
     }
 
     /**
@@ -64,14 +62,12 @@ class ApiController extends AbstractController
             'json'
         );
 
-        $resp = new JsonResponse(
+        return new JsonResponse(
             $result,
             Response::HTTP_OK,
             [],
             true
         );
-
-        return $resp->headers->set('Access-Control-Allow-Origin', '*');
     }
 
     /**
@@ -99,14 +95,12 @@ class ApiController extends AbstractController
             'json'
         );
 
-        $resp = new JsonResponse(
+        return new JsonResponse(
             $result,
             Response::HTTP_OK,
             [],
             true
         );
-
-        return $resp->headers->set('Access-Control-Allow-Origin', '*');
     }
 
     /**
@@ -134,14 +128,12 @@ class ApiController extends AbstractController
             'json'
         );
 
-        $resp = new JsonResponse(
+        return new JsonResponse(
             $result,
             Response::HTTP_OK,
             [],
             true
         );
-
-        return $resp->headers->set('Access-Control-Allow-Origin', '*');
     }
 
     /**
@@ -169,14 +161,12 @@ class ApiController extends AbstractController
             'json'
         );
 
-        $resp = new JsonResponse(
+        return new JsonResponse(
             $result,
             Response::HTTP_OK,
             [],
             true
         );
-
-        return $resp->headers->set('Access-Control-Allow-Origin', '*');
     }
 
     /**
@@ -199,14 +189,12 @@ class ApiController extends AbstractController
             'json'
         );
 
-        $resp = new JsonResponse(
+        return new JsonResponse(
             $result,
             Response::HTTP_OK,
             [],
             true
         );
-
-        return $resp->headers->set('Access-Control-Allow-Origin', '*');
     }
 
     /**
@@ -234,14 +222,12 @@ class ApiController extends AbstractController
             'json'
         );
 
-        $resp = new JsonResponse(
+        return new JsonResponse(
             $result,
             Response::HTTP_OK,
             [],
             true
         );
-
-        return $resp->headers->set('Access-Control-Allow-Origin', '*');
     }
 
 }
